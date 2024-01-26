@@ -4,7 +4,7 @@ export interface CustomButtonProp{
     title:string;
     containerStyles?:string;
     handleClick?:MouseEventHandler<HTMLButtonElement>;
-    fontsize:string;
+    fontsize?:string;
     btnType?:"button"|"submit";
     textStyle?:string
     rightIcon?:string

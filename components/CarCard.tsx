@@ -1,3 +1,4 @@
+"use client"
 import { CarProps } from '@/types/types'
 import React, { useState } from 'react'
 import { calculateRent } from './util'
@@ -52,6 +53,7 @@ const [IsOpen, setIsOpen] = useState(false)
     textStyle="text-white text-[14px] leading-[17px] font-bold"
     rightIcon = "/right-arrow.svg"
     handleClick={()=>setIsOpen(true)}
+    
     />
 </div>
 
