@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
-import { CustomButton } from '@/components'
+import CustomButton from '@/components/CustomButton'
+
 
 const NavBar = () => {
   return (
