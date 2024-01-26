@@ -11,10 +11,10 @@ const SearchBar = () => {
     onSubmit={handleSearch}
     className="searchbar">
 <div className="searchbar__item">
-    <SearchManufacturer
+    {/* <SearchManufacturer
     manufacturer={Manufacturer}
     setManufacturer={setManufacturer}
-    />
+    /> */}
 </div>
     </form>
   )
