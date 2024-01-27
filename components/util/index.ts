@@ -1,17 +1,26 @@
 
 
-export async function fetchCar(){
- const header= {
-    'X-RapidAPI-Key': '190d360537msh3eb6a50bdf1c62ep1cabc7jsn6200259da9e3',
-		'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
- }   
- const response =await fetch('https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla',{
-    headers:header,
- });
-const result = await response.json();
-return result
-
+export async function fetchCar() {
+   try {
+      const secretKey = process.env['RapidAPI_Key'];
+      if (!secretKey) {
+         throw new Error('RapidAPI_Key is not set in the environment variables');
+      }
+      const header = {
+         'X-RapidAPI-Key': secretKey,
+         'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
+      }   
+      const response = await fetch('https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla', {
+         headers: header,
+      });
+      const result = await response.json();
+      return result;
+   } catch (error) {
+      console.error('An error occurred:', error);
+      throw error;
+   }
 }
+
 
 
 
