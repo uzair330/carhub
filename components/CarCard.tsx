@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { calculateRent } from './util'
 import Image from 'next/image'
 import CustomButton from './CustomButton'
+import CarDetails from './CarDetails'
 interface CarCardProps {
   car: CarProps
 }
@@ -11,6 +12,8 @@ const CarCard = ({car}:CarCardProps) => {
     const {city_mpg,drive,make,model,transmission,year} = car
 const [IsOpen, setIsOpen] = useState(false)
     const carRent = calculateRent(year,city_mpg)
+   
+    
   return (
     <div className='car-card group'>
       <div className="car-card__content">
@@ -59,7 +62,7 @@ const [IsOpen, setIsOpen] = useState(false)
 
 </div>
 
-
+<CarDetails IsOpen={IsOpen} closeModel={()=>(setIsOpen(false))} car={car}/>
 
     </div>
   )
