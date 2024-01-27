@@ -1,4 +1,4 @@
-//Getting data from api
+//Getting data from api rapid api
 
 export async function fetchCar() {
    try {
