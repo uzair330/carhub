@@ -12,6 +12,7 @@ export async function fetchCar() {
       }   
       const response = await fetch('https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla', {
          headers: header,
+         cache:"no-store"
       });
       const result = await response.json();
       return result;
