@@ -10,13 +10,13 @@ interface carDetailProps{
 const CarDetails = ({IsOpen,closeModel,car}:carDetailProps) => {
     console.log("CarDetails");
     
-    // console.log(IsOpen)
+    console.log(IsOpen)
   return (
 
     <>
     <Transition
     // appear show={IsOpen} as={Fragment}
-    appear show={true} as={Fragment}
+    appear show={IsOpen} as={Fragment}
 
     >
 <Dialog as='div' className={'relative z-10'} onClose={closeModel} >

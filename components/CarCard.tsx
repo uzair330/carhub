@@ -9,9 +9,10 @@ interface CarCardProps {
   car: CarProps
 }
 const CarCard = ({car}:CarCardProps) => {
+    const [IsOpen, setIsOpen] = useState(false)
     const {city_mpg,drive,make,model,transmission,year} = car
-const [IsOpen, setIsOpen] = useState(false)
     const carRent = calculateRent(year,city_mpg)
+   console.log(IsOpen);
    
     
   return (
