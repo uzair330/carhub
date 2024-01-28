@@ -17,11 +17,12 @@ const SearchManufacturer = ({Manufacturer, setManufacturer}:ManufacturerProps) =
     <div className="search-manufacturer">
       <Combobox value={Manufacturer} onChange={setManufacturer}>
         <div className="relative w-full">
-          <div className="absolute top-[14px]">
+          <Combobox.Button className="absolute top-[14px]">
             <Image src='/car-logo.svg' alt='car logo' width={20} height={20} className='ml-4'/>
-          </div>
+          </Combobox.Button>
           <Combobox.Input 
             className="search-manufacturer__input"
+            displayValue={(Manufacturer:string)=>Manufacturer}
             placeholder='Volkswagen'
             onChange={(e)=>setquery(e.target.value)}
           />

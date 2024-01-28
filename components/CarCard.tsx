@@ -12,8 +12,11 @@ const CarCard = ({car}:CarCardProps) => {
     const [IsOpen, setIsOpen] = useState(false)
     const {city_mpg,drive,make,model,transmission,year} = car
     const carRent = calculateRent(year,city_mpg)
-   console.log(IsOpen);
-   
+    
+   const handleClickDialog=()=>{
+    setIsOpen(true)
+    console.log(IsOpen)
+   }
     
   return (
     <div className='car-card group'>
@@ -57,6 +60,7 @@ const CarCard = ({car}:CarCardProps) => {
     textStyle="text-white text-[14px] leading-[17px] font-bold"
     rightIcon = "/right-arrow.svg"
     handleClick={()=>setIsOpen(true)}
+    
     
     />
     
