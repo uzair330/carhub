@@ -1,7 +1,7 @@
 "use client"
 import { CarProps } from '@/types/types'
 import React, { useState } from 'react'
-import { calculateRent } from './util'
+import { calculateRent, generateCarImageUrl } from './util'
 import Image from 'next/image'
 import CustomButton from './CustomButton'
 import CarDetails from './CarDetails'
@@ -32,7 +32,7 @@ const CarCard = ({car}:CarCardProps) => {
         </span>    
       </p>
     <div className="relative w-full h-40 my-3 object-contain">
-        <Image src="/hero.png" alt='' fill priority className='object-contain' />
+        <Image src={generateCarImageUrl(car)} alt='' fill priority className='object-contain' />
     </div>
 <div className="relative flex w-full mt-2">
     <div className="flex group-hover:invisible w-full justify-between text-gray">
@@ -59,11 +59,12 @@ const CarCard = ({car}:CarCardProps) => {
     handleClick={()=>setIsOpen(true)}
     
     />
+    
 </div>
 
 </div>
 
-<CarDetails IsOpen={IsOpen} closeModel={()=>(setIsOpen(false))} car={car}/>
+<CarDetails IsOpen={IsOpen} closeModel={()=>setIsOpen(false)} car={car}/>
 
     </div>
   )

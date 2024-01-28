@@ -3,9 +3,14 @@ import CarCard from "@/components/CarCard";
 import Hero from "@/components/Hero";
 import SearchBar from "@/components/SearchBar";
 import { fetchCar } from "@/components/util";
+
 import Image from "next/image";
 
 export default async function Home() {
+
+
+
+
   const allcars= await fetchCar();
   const isDataEmpty = !Array.isArray(allcars) || allcars.length < 1 || !allcars;
   
@@ -59,3 +64,4 @@ export default async function Home() {
    </main>
   );
 }
+

@@ -9,7 +9,7 @@ const CustomButton = ({title,containerStyles,handleClick,fontsize,btnType,textSt
    disabled={false}
    type={btnType}
    className={`drop-shadow-sm ${containerStyles} `}
-   onClick={()=>{}}
+   onClick={handleClick}
    
    >
     <div className="flex ">

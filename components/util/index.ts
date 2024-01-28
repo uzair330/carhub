@@ -1,5 +1,7 @@
 //Getting data from api
 
+import { CarProps } from "@/types/types";
+
 export async function fetchCar() {
    try {
       const secretKey = process.env['RapidAPI_Key'];
@@ -10,7 +12,7 @@ export async function fetchCar() {
          'X-RapidAPI-Key': secretKey,
          'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
       }   
-      const response = await fetch('https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla', {
+      const response = await fetch('https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=sportage', {
          headers: header,
          cache:"no-store"
       });
@@ -44,4 +46,17 @@ export function calculateRent(year: number, cityMileage: number): number {
 
   
  
-  
+export const generateCarImageUrl=(car:CarProps,angle?:string)=>{
+   const url= new URL('https://cdn.imagin.studio/getimage')
+  const {make,year,model}=car
+   url.searchParams.append("customer","hrjavascript-mastery")
+
+   url.searchParams.append("make",make)
+   url.searchParams.append("modelFamily",model.split(" ")[0])
+   url.searchParams.append("zoomType","fulscreen")
+   url.searchParams.append("modelYear",`${year}`)
+   url.searchParams.append("angle",`${angle}`)
+   return `${url}`
+
+
+}  
