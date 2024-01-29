@@ -5,6 +5,7 @@ import SearchManufacturer from "@/components/SearchManufacturer"
 import FetchCarModel from "./util/actions"
 import { useFormState } from "react-dom"
 import Image from "next/image"
+import {useRouter} from "next/navigation"
 
 
 
@@ -13,7 +14,8 @@ import Image from "next/image"
 const SearchBar = () => {
   // const [state, SendingFormData] = useFormState(FetchCarModel, initialState)
     const [Manufacturer, setManufacturer] = useState("")
-const [model, setmodel] = useState("")    
+const [model, setmodel] = useState("")
+const router = useRouter()    
 const SearchButton = ({otherClasses}:{otherClasses:string})=>(
   <button
   type="submit"
@@ -28,7 +30,30 @@ const SearchButton = ({otherClasses}:{otherClasses:string})=>(
     />
   </button>
 )
-  const handleSearch=()=>{}
+  const handleSearch=(e:React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault()
+    if(Manufacturer == "" && model == ""){
+      return alert("Please select a manufacturer and model")
+    }
+    updateSearchParams(Manufacturer.toLowerCase(),model.toLowerCase())
+  }
+const updateSearchParams=(Manufacturer:string,model:string)=>{
+const searchParams = new URLSearchParams(window.location.search);
+if(model){
+  searchParams.set("model", model);
+}else{
+  searchParams.delete("model");
+}
+
+if(Manufacturer){
+  searchParams.set("Manufacturer", Manufacturer);
+}else{
+  searchParams.delete("Manufacturer");
+}
+const newPath = `${window.location.pathname}?${searchParams.toString()}`;
+router.push(newPath)
+}
+  
     return (
      
 
@@ -51,10 +76,11 @@ const SearchButton = ({otherClasses}:{otherClasses:string})=>(
 onChange={(e)=>setmodel(e.target.value)}
 placeholder="Tiguan"
 className="searchbar__input"
-  >
+ />
+  <SearchButton otherClasses="sm:hidden"/>
   
-  </input>
 </div>
+  <SearchButton otherClasses="max-sm:hidden"/>
     </form>
     
     
