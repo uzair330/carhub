@@ -3,6 +3,7 @@ import CarCard from "@/components/CarCard";
 import CustomFilter from "@/components/CustomFilter";
 import Hero from "@/components/Hero";
 import SearchBar from "@/components/SearchBar";
+import ShowMore from "@/components/ShowMore";
 import { fetchCar } from "@/components/util";
 import { fuels, yearsOfProduction } from "@/constant";
 import { FilterProps } from "@/types/types";
@@ -63,6 +64,12 @@ export default async function Home({searchParams}:SearchParams) {
       ))
     }
   </div>
+  <ShowMore
+  pageNumber  = { (searchParams.limit || 10)/10  }
+
+  isNext  = {(searchParams.limit || 10)> allcars.length}
+  
+  />
 </section>
 ):(
   <div className="home__error-container">
@@ -70,7 +77,6 @@ export default async function Home({searchParams}:SearchParams) {
   <h2 className="text-black text-xl font-bold">Opps no results</h2>
   <p>{allcars?.message}</p>
   </div>
-  
 )}
 
 </div>
